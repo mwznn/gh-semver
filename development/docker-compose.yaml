@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  action:
+    container_name: semver-test
+    build:
+      context: ../
+      dockerfile: ./development/Dockerfile

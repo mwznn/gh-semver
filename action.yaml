@@ -1,0 +1,15 @@
+name: "semver-gist"
+description: "semver using gist as source of truth."
+branding:
+  icon: "play"
+  color: "gray-dark"
+inputs:
+  id:
+    description: "Gist id"
+    required: true
+outputs:
+  content:
+    description: "Gist content"
+runs:
+  using: "node20"
+  main: "index.js"
