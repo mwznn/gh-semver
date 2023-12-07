@@ -1,0 +1,101 @@
+const core = require("@actions/core");
+const https = require("https");
+const nextVersion = require("semver/functions/inc");
+
+function buildOptions(id) {
+  return {
+    hostname: "api.github.com",
+    port: 443,
+    path: `/gists/${id}`,
+    headers: {
+      "User-Agent": "mwznn/semver-gist@v1-dev",
+      "Content-Type": "application/json",
+    },
+  };
+}
+
+async function get(id) {
+  return new Promise((resolve, reject) => {
+    const options = buildOptions(id);
+    console.log({ ...options, method: "GET" });
+    const req = https.request(options, (res) => {
+      let content = [];
+      res.on("data", (chunk) => content.push(chunk));
+
+      res.on("end", () => {
+        const response = JSON.parse(Buffer.concat(content).toString());
+        if (response.files.semver) {
+          resolve(JSON.parse(response.files.semver.content));
+        } else {
+          reject({ message: "semver not found. create the file before using this action." });
+        }
+      });
+
+      res.on("error", (err) => reject(err));
+    });
+
+    req.end();
+  });
+}
+
+async function update(id) {
+  return new Promise((resolve, reject) => {
+    const options = buildOptions(id);
+    console.log({ ...options, method: "GET" });
+    const req = https.request(options, (res) => {
+      let content = [];
+      res.on("data", (chunk) => content.push(chunk));
+
+      res.on("end", () => {
+        const response = JSON.parse(Buffer.concat(content).toString());
+        if (response.files.semver) {
+          resolve(JSON.parse(response.files.semver.content));
+        } else {
+          reject({ message: "semver not found. create the file before using this action." });
+        }
+      });
+
+      res.on("error", (err) => reject(err));
+    });
+
+    req.end();
+  });
+}
+
+try {
+  // const req = {
+  //   id: core.getInput("id") ?? "aa6d8754cedff91ff82e249755d44a43",
+  //   app: core.getInput("app") ?? "core",
+  //   releaseType: core.getInput("releaseType") ?? "prerelease",
+  //   identifier: core.getInput("identifier") ?? "dev",
+  //   identifierBase: core.getInput("identifierBase") ?? undefined,
+  // };
+  const req = {
+    id: "aa6d8754cedff91ff82e249755d44a43",
+    app: "core",
+    releaseType: "prerelease",
+    identifier: "dev",
+    identifierBase: undefined,
+  };
+  get(req.id)
+    .then((semver) => core.setOutput("next", nextVersion(semver[req.app], req.releaseType, req.identifier, req.identifierBase ?? false)))
+    .catch((err) => core.setFailed(err.message));
+} catch (error) {
+  core.setFailed(error.message);
+}
+
+try {
+  octokit.rest.gists
+    .get({ gist_id: req.id })
+    .then((response) => {
+      const semver = response.data.files.semver;
+      if (semver) {
+        core.setOutput("semver", JSON.parse(semver.content));
+      } else {
+        core.setFailed("Failed to find semver for this gist.");
+      }
+    })
+    .catch((err) => core.setFailed(err.message));
+} catch (error) {
+  core.setFailed(error.message);
+}
