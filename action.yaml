@@ -7,9 +7,23 @@ inputs:
   id:
     description: "Gist id"
     required: true
+  app:
+    description: "Name of the app"
+    required: true
+  releaseType:
+    description: "Release type of the current version."
+    required: false
+    default: "prerelease"
+  identifier:
+    description: "Release idetentifier"
+    required: false
+    default: "dev"
+  identifierBase:
+    description: "Base value for the idetentifier"
+    required: false
 outputs:
-  content:
-    description: "Gist content"
+  next:
+    description: "Next Version"
 runs:
   using: "node20"
   main: "index.js"
