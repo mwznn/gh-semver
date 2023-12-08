@@ -1,26 +1,22 @@
 {
   "name": "semver-gist",
-  "version": "1-dev",
-  "description": "",
+  "version": "1.0.0-dev",
+  "description": "semver control with gist files.",
   "main": "index.js",
+  "keywords": [
+    "gist",
+    "semver",
+    "versioning"
+  ],
+  "author": "mwznn",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "ncc build src/index.js -o dist",
+    "test": "node tests/tests.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mwznn/semver-gist.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mwznn/semver-gist/issues"
-  },
-  "homepage": "https://github.com/mwznn/semver-gist#readme",
   "dependencies": {
     "@actions/core": "^1.10.1",
     "@actions/github": "^6.0.0",
-    "octokit": "^3.1.2",
     "semver": "^7.5.4"
   }
 }

@@ -1,8 +1,6 @@
-VERSION=v1-dev
-
-reset:
-	git tag -d ${VERSION}
-	git add .
-	git commit --amend --no-edit
-	git tag -a -m "Testing release dev" ${VERSION}
-	git push origin main -f --follow-tags
+build:
+	rm dist -rdf
+	npm run build
+test:
+	make build
+	npm run test

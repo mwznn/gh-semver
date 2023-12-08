@@ -1,29 +1,38 @@
 name: "semver-gist"
-description: "semver using gist as source of truth."
+description: manages versioning using semantic versioning through gist.
 branding:
-  icon: "play"
-  color: "gray-dark"
+  icon: play
+  color: gray-dark
 inputs:
-  id:
-    description: "Gist id"
+  action:
+    description: "Action type"
     required: true
-  app:
-    description: "Name of the app"
+    default: "next"
+  token:
+    description: "Token for authorized requests"
     required: true
-  releaseType:
-    description: "Release type of the current version."
-    required: false
+  gist_id:
+    description: "Gist id used on action"
+    required: true
+  package_name:
+    description: "Name of the package used on action"
+    required: true
+  release_type:
+    description: "Type of the release"
     default: "prerelease"
   identifier:
     description: "Release idetentifier"
-    required: false
     default: "dev"
-  identifierBase:
+  identifier_base:
     description: "Base value for the idetentifier"
-    required: false
+    default: "0"
+  snapshot:
+    description: "Snapshot of the increment action"
 outputs:
-  next:
-    description: "Next Version"
+  version:
+    description: "The incremented version of the package"
+  snapshot:
+    description: "Snapshot of the increment action"
 runs:
   using: "node20"
-  main: "index.js"
+  main: "dist/index.js"
