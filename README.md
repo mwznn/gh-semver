@@ -19,13 +19,13 @@ Defines rather the action is `next` or `patch`. Defaults to `next` when null.
 ### `package_name`
 `Required` Defines the name of the package that will be searched.
 
-### `release_type` **
+### `release_type` *
 Defines the type of the release for the new version using `major|premajor|minor|preminor|patch|prepatch|prerelease`. Defaults to `prerelease` when null.
 
-### `identifier` **
+### `identifier` *
 Defines the identifier ot the new version, e.g. `dev|alpha|beta|build`. Defaults to `dev` when null.
 
-### `identifier_base` **
+### `identifier_base` *
 Defines the base value for the identifier using `0` or `1` as the base value. Defaults to `0` when null.
 
 ### `snapshot` *
@@ -33,8 +33,7 @@ A snapshot of the parameters used in the previous calculation.
 
 ### Notes
 
-- \* Used only by `patch` action.
-- ** Used only by `next` action.
+- \* Used only by `next` action.
    
 ## Outputs
 
