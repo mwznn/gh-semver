@@ -3,7 +3,16 @@ Control versioning for different packages using gist file as persistence.
 
 ## Requirements
 
-Before using the semver, create your
+This action requires an already created gist with a specific format and filename.
+
+```json
+// filename: semver.json
+{
+    "package-name-01": "0.0.0",
+    "package-name-02": "0.0.0",
+    // ... and so on.
+}
+```
 
 ## Inputs
 
@@ -78,4 +87,15 @@ env:
     "version": "0.0.1-dev.0",
     "content": "{\"my-package\":\"0.0.0\"}"
 }
+```
+
+## Testing Locally
+
+In order to test locally, create a `env.js` with some configurations.
+
+```json
+module.exports = {
+  "ACTION": "next | patch",
+  "TOKEN": "__PAT_TOKEN_WITH_GIST_PERMISSION__",
+};
 ```

@@ -39,7 +39,7 @@ async function patch(inputs) {
   try {
     await octokit.rest.gists.update({
       gist_id: inputs.gist_id,
-      files: { semver: { content: JSON.stringify(snapshot.content) } },
+      files: { "semver.json": { content: JSON.stringify(snapshot.content, null, 2) } },
     });
     core.info("Successfully updated the semver for the package.");
   } catch (error) {
