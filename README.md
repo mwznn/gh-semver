@@ -3,14 +3,13 @@ Control versioning for different packages using gist file as persistence.
 
 ## Requirements
 
-This action requires an already created gist with a specific format and filename.
+This action requires an already created gist with a specific format and filename as `semver.json`.
 
 ```json
-// filename: semver.json
 {
     "package-name-01": "0.0.0",
     "package-name-02": "0.0.0",
-    // ... and so on.
+    "...": "and so on..."
 }
 ```
 
@@ -93,7 +92,7 @@ env:
 
 In order to test locally, create a `env.js` with some configurations.
 
-```json
+```js
 module.exports = {
   "ACTION": "next | patch",
   "TOKEN": "__PAT_TOKEN_WITH_GIST_PERMISSION__",
