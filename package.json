@@ -1,6 +1,6 @@
 {
   "name": "semver-gist",
-  "version": "1.0.0-dev",
+  "version": "1.0.0",
   "description": "semver control with gist files.",
   "main": "index.js",
   "keywords": [
