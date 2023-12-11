@@ -1,5 +1,5 @@
 # semver-gist
-Control versioning for different packages using gist file as persistence.
+Control versioning for different packages using gist file as persistence. For more info and how to do things, check the [semver page](https://semver.org/).
 
 ## Requirements
 
@@ -41,7 +41,7 @@ A snapshot of the parameters used in the previous calculation.
 
 ### Notes
 
-- \* Used only by `next` action.
+- \* Used only by `next` action. Identifier and Identifier_base work only with prerelease types.
    
 ## Outputs
 
