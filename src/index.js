@@ -2,6 +2,8 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 const semverInc = require("semver/functions/inc");
 
+const semver_file = "semver.json";
+
 function getInputs() {
   return {
     action: core.getInput("action", { required: true }),
@@ -18,11 +20,11 @@ function getInputs() {
 async function next(inputs) {
   const octokit = github.getOctokit(inputs.token);
   const response = await octokit.rest.gists.get({ gist_id: inputs.gist_id });
-  if (!response.data.files.semver) {
+  if (!response.data.files[semver_file]) {
     core.setFailed("Failed to find semver file.");
     return;
   }
-  const semver = JSON.parse(response.data.files.semver.content);
+  const semver = JSON.parse(response.data.files[semver_file].content);
   const identifier_base = inputs.identifier_base === "" || inputs.identifier_base === "false" ? false : inputs.identifier_base;
   const version = semverInc(semver[inputs.package_name], inputs.release_type, inputs.identifier, identifier_base);
   core.setOutput("version", version);
@@ -39,7 +41,7 @@ async function patch(inputs) {
   try {
     await octokit.rest.gists.update({
       gist_id: inputs.gist_id,
-      files: { "semver.json": { content: JSON.stringify(snapshot.content, null, 2) } },
+      files: { [semver_file]: { content: JSON.stringify(snapshot.content, null, 2) } },
     });
     core.info("Successfully updated the semver for the package.");
   } catch (error) {

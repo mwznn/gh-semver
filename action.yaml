@@ -19,13 +19,13 @@ inputs:
     required: true
   release_type:
     description: "Type of the release"
-    default: "prerelease"
+    default: "patch"
   identifier:
     description: "Release idetentifier"
-    default: "dev"
+    default: ""
   identifier_base:
     description: "Base value for the idetentifier"
-    default: "0"
+    default: "false"
   snapshot:
     description: "Snapshot of the increment action"
 outputs:
