@@ -19,7 +19,7 @@ This action requires an already created gist with a specific format and filename
 Defines rather the action is `next` or `patch`. Defaults to `next` when null.
 
 ### `token` 
-`Required` Defines the token used for the actions. Inside the workflow, it uses the default GITHUB_TOKEN. For testing, use any PAT with permission.
+`Required` Defines the token used for the actions. Create a [personal access token](https://github.com/settings/personal-access-tokens/new) with GIST permissions to be able to use it.
 
 ### `gist_id`
 `Required` Defines the public or private id of the gist.
