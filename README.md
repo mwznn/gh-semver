@@ -1,4 +1,4 @@
-# github semver (gh-semver)
+# GH-Semver - Github SemVer by Gist
 Control versioning for different packages using gist file as persistence. For more info and how to do things, check the [semver page](https://semver.org/).
 
 ## Requirements
