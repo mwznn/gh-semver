@@ -1,4 +1,4 @@
-# semver-gist
+# github semver (gh-semver)
 Control versioning for different packages using gist file as persistence. For more info and how to do things, check the [semver page](https://semver.org/).
 
 ## Requirements
@@ -60,7 +60,7 @@ env:
 
 # fetches new version
 - id: semver
-- uses: mwznn/semver-gist@{version}
+- uses: mwznn/gh-semver@{version}
     with:
         action: next
         token: ${{ secrets.GITHUB_TOKEN }},
@@ -71,7 +71,7 @@ env:
         identifier_base: 1
 
 # patch action
-- uses: mwznn/semver-gist@{version}
+- uses: mwznn/gh-semver@{version}
     with:
         action: patch
         token: ${{ secrets.GITHUB_TOKEN }},

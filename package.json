@@ -1,7 +1,7 @@
 {
-  "name": "semver-gist",
+  "name": "gh-semver",
   "version": "1.0.0",
-  "description": "semver control with gist files.",
+  "description": "github semver control with gist files.",
   "main": "index.js",
   "keywords": [
     "gist",
